@@ -28,7 +28,7 @@ public:
 		//I can't think of a safer way to do this...
 		std::unique_ptr<const char*> lpArgs(new const char* [args.size()]);
 		const char** lpszArgs = lpArgs.get();
-		
+
 		for (int i = 0; i < args.size(); ++i)
 		{
 			lpszArgs[i] = args[i].c_str();
@@ -80,6 +80,7 @@ private:
 };
 
 //It will cause a declaration clash if I don't do this.
+#undef OpenService
 #undef CreateService
 
 //Service access constants.
@@ -189,7 +190,7 @@ int main(int argc, const char** argv)
 
 	ServiceManager::DeleteService(svcHandle);
 	ServiceManager::Shutdown();
-	
+
 	//-----------------------------------------------------------------
 
 	std::getchar();
