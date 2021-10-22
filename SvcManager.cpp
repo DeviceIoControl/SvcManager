@@ -1,5 +1,4 @@
 // SvcManager.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
 
 #include <Windows.h>
 #include <algorithm>
@@ -168,7 +167,7 @@ public:
 	//Shutdown the Service Manager.
 	inline static bool Shutdown()
 	{
-		return ::CloseServiceHandle(ServiceManager::m_SvcManager);
+		return CloseServiceHandle(ServiceManager::m_SvcManager);
 	}
 
 private:
@@ -190,7 +189,8 @@ int main(int argc, const char** argv)
 
 	ServiceManager::DeleteService(svcHandle);
 	ServiceManager::Shutdown();
-	//-------------------------------------
+	
+	//-----------------------------------------------------------------
 
 	std::getchar();
 	return 0;
