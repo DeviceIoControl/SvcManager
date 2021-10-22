@@ -4,14 +4,16 @@
 #include <algorithm>
 #include <iostream>
 #include <vector>
+#include <array>
 #include <memory>
 
 class ServiceHandle
 {
 public:
-	ServiceHandle(SC_HANDLE hSvcHandle)
+	ServiceHandle(SC_HANDLE hSvcHandle, std::string svcDispName)
 	{
 		this->m_SvcHandle = hSvcHandle;
+		this->m_DispName = std::move(svcDispName);
 	}
 
 	ServiceHandle(const ServiceHandle& svcHandle) = delete;
@@ -20,6 +22,7 @@ public:
 		: m_SvcHandle((SC_HANDLE)INVALID_HANDLE_VALUE)
 	{
 		std::swap(svcHandle.m_SvcHandle, this->m_SvcHandle);
+		std::swap(svcHandle.m_DispName, this->m_DispName);
 	}
 
 	//Start the service.
@@ -37,16 +40,15 @@ public:
 		return ::StartServiceA(this->m_SvcHandle, args.size(), lpszArgs);
 	}
 
+	inline const std::string& Name() const { return this->m_DispName; }
+
 	//Check if the service handle is valid.
 	inline bool Valid() const
 	{
 		return (this->m_SvcHandle != static_cast<SC_HANDLE>(INVALID_HANDLE_VALUE));
 	}
 
-	inline operator SC_HANDLE() const
-	{
-		return this->m_SvcHandle;
-	}
+	inline operator SC_HANDLE() const { return this->m_SvcHandle; }
 
 	//Stop the service.
 	inline bool Stop() const
@@ -66,6 +68,7 @@ public:
 	ServiceHandle& operator=(ServiceHandle&& rhs) noexcept
 	{
 		std::swap(this->m_SvcHandle, rhs.m_SvcHandle);
+		std::swap(this->m_DispName, rhs.m_DispName);
 		return *this;
 	}
 
@@ -77,6 +80,7 @@ public:
 
 private:
 	SC_HANDLE m_SvcHandle;
+	std::string m_DispName;
 };
 
 //It will cause a declaration clash if I don't do this.
@@ -148,7 +152,7 @@ public:
 			static_cast<DWORD>(ErrorControl), svcBinPath.c_str(), nullptr, &SvcTagId, nullptr, svcUserName.c_str(),
 			svcUserPwd.c_str());
 
-		return ServiceHandle(serviceHandle);
+		return ServiceHandle(serviceHandle, svcDispName);
 	}
 
 	static ServiceHandle OpenService(const std::string& svcName, SVC_ACCESS desiredAccess)
@@ -156,7 +160,16 @@ public:
 		SC_HANDLE svcHandle = OpenServiceA(ServiceManager::m_SvcManager,
 			svcName.c_str(), static_cast<DWORD>(desiredAccess));
 
-		return ServiceHandle(svcHandle);
+		std::array<char, 0x1000> dispNameChars = { 0 };
+		DWORD dispNameCharArraySize = dispNameChars.size();
+		
+		if (GetServiceDisplayNameA(ServiceManager::m_SvcManager, svcName.c_str(),
+			dispNameChars.data(), &dispNameCharArraySize)) 
+		{
+			return ServiceHandle(svcHandle, std::string(dispNameChars.data()));
+		}
+ 
+		return ServiceHandle(svcHandle, "");
 	}
 
 	//Deletes the service.
@@ -185,6 +198,7 @@ int main(int argc, const char** argv)
 		SVC_TYPE::KERNEL_DRIVER, SVC_START_TYPE::MANUAL, SVC_ERROR_CTRL::ERROR_NORMAL,
 		"C:\\Test\\TestDriver.sys");
 
+	std::cout << "Service Name: " << svcHandle.Name() << "\n";
 	svcHandle.Start({ "Argument 1", "Argument 2" });
 	svcHandle.Stop();
 
