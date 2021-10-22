@@ -1,24 +1,21 @@
-﻿Build started 22/10/2021 06:56:33.
+﻿Build started 22/10/2021 07:19:56.
 Logging verbosity is set to: Normal.     1>Project "U:\00000000001\Visual Studio 2019\Solutions\DevProjects\SvcManager\SvcManager.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\bin\HostX86\x86\CL.exe /c /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Fo"Debug\\" /Fd"Debug\vc142.pdb" /external:W3 /Gd /TP /analyze- /FC /errorReport:prompt SvcManager.cpp
          SvcManager.cpp
-     1>U:\00000000001\Visual Studio 2019\Solutions\DevProjects\SvcManager\SvcManager.cpp(32,21): warning C4018: '<': signed/unsigned mismatch
-     1>U:\00000000001\Visual Studio 2019\Solutions\DevProjects\SvcManager\SvcManager.cpp(34,14): error C2676: binary '[': 'std::unique_ptr<const char *,std::default_delete<const char *>>' does not define this operator or a conversion to a type acceptable to the predefined operator
-     1>Done Building Project "U:\00000000001\Visual Studio 2019\Solutions\DevProjects\SvcManager\SvcManager.vcxproj" (Build target(s)) -- FAILED.
+     1>U:\00000000001\Visual Studio 2019\Solutions\DevProjects\SvcManager\SvcManager.cpp(33,21): warning C4018: '<': signed/unsigned mismatch
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\bin\HostX86\x86\link.exe /ERRORREPORT:PROMPT /OUT:"U:\00000000001\Visual Studio 2019\Solutions\DevProjects\Debug\SvcManager.exe" /INCREMENTAL /ILK:"Debug\SvcManager.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"U:\00000000001\Visual Studio 2019\Solutions\DevProjects\Debug\SvcManager.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"U:\00000000001\Visual Studio 2019\Solutions\DevProjects\Debug\SvcManager.lib" /MACHINE:X86 Debug\SvcManager.obj
+         SvcManager.vcxproj -> U:\00000000001\Visual Studio 2019\Solutions\DevProjects\Debug\SvcManager.exe
+     1>Done Building Project "U:\00000000001\Visual Studio 2019\Solutions\DevProjects\SvcManager\SvcManager.vcxproj" (Build target(s)).
 
-Build FAILED.
-
-       "U:\00000000001\Visual Studio 2019\Solutions\DevProjects\SvcManager\SvcManager.vcxproj" (Build target) (1) ->
-       (ClCompile target) -> 
-         U:\00000000001\Visual Studio 2019\Solutions\DevProjects\SvcManager\SvcManager.cpp(32,21): warning C4018: '<': signed/unsigned mismatch
-
+Build succeeded.
 
        "U:\00000000001\Visual Studio 2019\Solutions\DevProjects\SvcManager\SvcManager.vcxproj" (Build target) (1) ->
        (ClCompile target) -> 
-         U:\00000000001\Visual Studio 2019\Solutions\DevProjects\SvcManager\SvcManager.cpp(34,14): error C2676: binary '[': 'std::unique_ptr<const char *,std::default_delete<const char *>>' does not define this operator or a conversion to a type acceptable to the predefined operator
+         U:\00000000001\Visual Studio 2019\Solutions\DevProjects\SvcManager\SvcManager.cpp(33,21): warning C4018: '<': signed/unsigned mismatch
 
     1 Warning(s)
-    1 Error(s)
+    0 Error(s)
 
-Time Elapsed 00:00:01.31
+Time Elapsed 00:00:01.94

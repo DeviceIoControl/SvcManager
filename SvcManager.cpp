@@ -129,9 +129,9 @@ enum class SVC_TYPE : uint32_t
 class ServiceManager
 {
 public:
-	static bool Initialize()
+	static bool Initialize(const std::string& machineName = "")
 	{
-		ServiceManager::m_SvcManager = OpenSCManagerA(nullptr, nullptr, SC_MANAGER_ALL_ACCESS);
+		ServiceManager::m_SvcManager = OpenSCManagerA(machineName.c_str(), nullptr, SC_MANAGER_ALL_ACCESS);
 		return (ServiceManager::m_SvcManager == INVALID_HANDLE_VALUE) ? false : true;
 	}
 
