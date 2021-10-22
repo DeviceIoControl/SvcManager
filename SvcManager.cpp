@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <iostream>
 #include <vector>
+#include <memory>
 
 class ServiceHandle
 {
@@ -26,8 +27,9 @@ public:
 	bool Start(const std::vector<std::string>& args) const
 	{
 		//I can't think of a safer way to do this...
-		const char** lpszArgs = new const char* [args.size()];
-
+		std::unique_ptr<const char*> lpArgs(new const char* [args.size()]);
+		const char** lpszArgs = lpArgs.get();
+		
 		for (int i = 0; i < args.size(); ++i)
 		{
 			lpszArgs[i] = args[i].c_str();
@@ -42,7 +44,6 @@ public:
 		return (this->m_SvcHandle != static_cast<SC_HANDLE>(INVALID_HANDLE_VALUE));
 	}
 
-	//Implicit conversion operator overload.
 	inline operator SC_HANDLE() const
 	{
 		return this->m_SvcHandle;
