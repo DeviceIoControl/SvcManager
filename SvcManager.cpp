@@ -169,7 +169,7 @@ public:
 			return ServiceHandle(svcHandle, std::string(dispNameChars.data()));
 		}
  
-		return ServiceHandle(svcHandle, "");
+		return ServiceHandle(svcHandle, "N/A");
 	}
 
 	//Deletes the service.
