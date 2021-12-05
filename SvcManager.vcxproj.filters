@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SvcManager.cpp">
+    <ClCompile Include="SvcManager.hpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
