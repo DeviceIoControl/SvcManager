@@ -1,4 +1,4 @@
-﻿Build started 05/12/2021 18:03:15.
+﻿Build started 05/12/2021 21:12:46.
 Logging verbosity is set to: Normal.     1>Project "U:\00000000001\Visual Studio 2019\Solutions\DevProjects\SvcManager\SvcManager.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\bin\HostX86\x64\CL.exe /c /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Fo"x64\Debug\\" /Fd"x64\Debug\vc142.pdb" /external:W3 /Gd /TP /FC /errorReport:prompt SvcManager.hpp
@@ -20,4 +20,4 @@ Build succeeded.
     2 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:01.91
+Time Elapsed 00:00:01.51
