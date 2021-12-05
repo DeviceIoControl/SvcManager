@@ -1,4 +1,5 @@
 // SvcManager.cpp : This file contains the 'main' function. Program execution begins and ends there.
+#pragma once
 
 #include <Windows.h>
 #include <algorithm>
@@ -10,6 +11,11 @@
 class ServiceHandle
 {
 public:
+	ServiceHandle() : m_SvcHandle((HANDLE)INVALID_HANDLE_VALUE)
+	{
+		this->m_DispName = "";
+	}
+
 	ServiceHandle(SC_HANDLE hSvcHandle, std::string svcDispName)
 	{
 		this->m_SvcHandle = hSvcHandle;
