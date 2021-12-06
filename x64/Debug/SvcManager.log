@@ -1,30 +1,23 @@
-﻿Build started 05/12/2021 23:33:45.
+﻿Build started 06/12/2021 09:01:54.
 Logging verbosity is set to: Normal.     1>Project "U:\00000000001\Visual Studio 2019\Solutions\DevProjects\SvcManager\SvcManager.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\bin\HostX86\x64\CL.exe /c /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Fo"x64\Debug\\" /Fd"U:\00000000001\Visual Studio 2019\Solutions\DevProjects\x64\Debug\SvcManager.pdb" /external:W3 /Gd /TP /FC /errorReport:prompt SvcManager.hpp
          SvcManager.hpp
-     1>U:\00000000001\Visual Studio 2019\Solutions\DevProjects\SvcManager\SvcManager.hpp(14,31): error C2440: 'initializing': cannot convert from 'HANDLE' to 'SC_HANDLE'
-       U:\00000000001\Visual Studio 2019\Solutions\DevProjects\SvcManager\SvcManager.hpp(14,31): message : Conversion from 'void*' to pointer to non-'void' requires an explicit cast
-     1>U:\00000000001\Visual Studio 2019\Solutions\DevProjects\SvcManager\SvcManager.hpp(15,1): error C2439: 'ServiceHandle::m_SvcHandle': member could not be initialized
-       U:\00000000001\Visual Studio 2019\Solutions\DevProjects\SvcManager\SvcManager.hpp(87): message : see declaration of 'ServiceHandle::m_SvcHandle'
-     1>U:\00000000001\Visual Studio 2019\Solutions\DevProjects\SvcManager\SvcManager.hpp(46,1): warning C4267: 'argument': conversion from 'size_t' to 'DWORD', possible loss of data
-     1>U:\00000000001\Visual Studio 2019\Solutions\DevProjects\SvcManager\SvcManager.hpp(169,1): warning C4267: 'initializing': conversion from 'size_t' to 'DWORD', possible loss of data
-     1>Done Building Project "U:\00000000001\Visual Studio 2019\Solutions\DevProjects\SvcManager\SvcManager.vcxproj" (Build target(s)) -- FAILED.
+     1>U:\00000000001\Visual Studio 2019\Solutions\DevProjects\SvcManager\SvcManager.hpp(47,1): warning C4267: 'argument': conversion from 'size_t' to 'DWORD', possible loss of data
+     1>U:\00000000001\Visual Studio 2019\Solutions\DevProjects\SvcManager\SvcManager.hpp(170,1): warning C4267: 'initializing': conversion from 'size_t' to 'DWORD', possible loss of data
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\bin\HostX86\x64\Lib.exe /OUT:"U:\00000000001\Visual Studio 2019\Solutions\DevProjects\x64\Debug\SvcManager.lib" /NOLOGO /MACHINE:X64 x64\Debug\SvcManager.obj
+         SvcManager.vcxproj -> U:\00000000001\Visual Studio 2019\Solutions\DevProjects\x64\Debug\SvcManager.lib
+     1>Done Building Project "U:\00000000001\Visual Studio 2019\Solutions\DevProjects\SvcManager\SvcManager.vcxproj" (Build target(s)).
 
-Build FAILED.
-
-       "U:\00000000001\Visual Studio 2019\Solutions\DevProjects\SvcManager\SvcManager.vcxproj" (Build target) (1) ->
-       (ClCompile target) -> 
-         U:\00000000001\Visual Studio 2019\Solutions\DevProjects\SvcManager\SvcManager.hpp(46,1): warning C4267: 'argument': conversion from 'size_t' to 'DWORD', possible loss of data
-         U:\00000000001\Visual Studio 2019\Solutions\DevProjects\SvcManager\SvcManager.hpp(169,1): warning C4267: 'initializing': conversion from 'size_t' to 'DWORD', possible loss of data
-
+Build succeeded.
 
        "U:\00000000001\Visual Studio 2019\Solutions\DevProjects\SvcManager\SvcManager.vcxproj" (Build target) (1) ->
        (ClCompile target) -> 
-         U:\00000000001\Visual Studio 2019\Solutions\DevProjects\SvcManager\SvcManager.hpp(14,31): error C2440: 'initializing': cannot convert from 'HANDLE' to 'SC_HANDLE'
-         U:\00000000001\Visual Studio 2019\Solutions\DevProjects\SvcManager\SvcManager.hpp(15,1): error C2439: 'ServiceHandle::m_SvcHandle': member could not be initialized
+         U:\00000000001\Visual Studio 2019\Solutions\DevProjects\SvcManager\SvcManager.hpp(47,1): warning C4267: 'argument': conversion from 'size_t' to 'DWORD', possible loss of data
+         U:\00000000001\Visual Studio 2019\Solutions\DevProjects\SvcManager\SvcManager.hpp(170,1): warning C4267: 'initializing': conversion from 'size_t' to 'DWORD', possible loss of data
 
     2 Warning(s)
-    2 Error(s)
+    0 Error(s)
 
-Time Elapsed 00:00:01.18
+Time Elapsed 00:00:01.60

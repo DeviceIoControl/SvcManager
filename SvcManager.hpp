@@ -11,9 +11,10 @@
 class ServiceHandle
 {
 public:
-	ServiceHandle() : m_SvcHandle((HANDLE)INVALID_HANDLE_VALUE)
+	ServiceHandle() noexcept
 	{
-		this->m_DispName = "";
+		this->m_DispName = "N/A";
+		this->m_SvcHandle = (SC_HANDLE)INVALID_HANDLE_VALUE;
 	}
 
 	ServiceHandle(SC_HANDLE hSvcHandle, std::string svcDispName)
@@ -24,7 +25,7 @@ public:
 
 	ServiceHandle(const ServiceHandle& svcHandle) = delete;
 
-	ServiceHandle(ServiceHandle&& svcHandle)
+	ServiceHandle(ServiceHandle&& svcHandle) noexcept
 		: m_SvcHandle((SC_HANDLE)INVALID_HANDLE_VALUE)
 	{
 		std::swap(svcHandle.m_SvcHandle, this->m_SvcHandle);
@@ -102,7 +103,15 @@ enum class SVC_ACCESS : uint32_t
 	QUERY_CONFIG = SERVICE_QUERY_CONFIG,
 	QUERY_STATUS = SERVICE_QUERY_STATUS,
 	ENUMERATE_DEPENDENTS = SERVICE_ENUMERATE_DEPENDENTS,
-	USER_DEFINED_CONTROL = SERVICE_USER_DEFINED_CONTROL
+	USER_DEFINED_CONTROL = SERVICE_USER_DEFINED_CONTROL,
+	ALL_ACCESS = 0x000F0000 | SERVICE_STOP |
+							SERVICE_START | 
+							SERVICE_PAUSE_CONTINUE | 
+							SERVICE_INTERROGATE | 
+							SERVICE_QUERY_CONFIG | 
+							SERVICE_QUERY_STATUS | 
+							SERVICE_ENUMERATE_DEPENDENTS |
+							SERVICE_USER_DEFINED_CONTROL
 };
 
 //Windows Service Start Types.
@@ -138,7 +147,7 @@ enum class SVC_TYPE : uint32_t
 class ServiceManager
 {
 public:
-	inline static bool Initialize(const std::string& machineName = "")
+	inline static bool Initialise(const std::string& machineName = "")
 	{
 		ServiceManager::m_SvcManager = OpenSCManagerA(machineName.c_str(), nullptr, SC_MANAGER_ALL_ACCESS);
 		return (ServiceManager::m_SvcManager == INVALID_HANDLE_VALUE) ? false : true;
