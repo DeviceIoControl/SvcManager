@@ -49,6 +49,28 @@ public:
 
 	inline const std::string& Name() const { return this->m_DispName; }
 
+	std::unique_ptr<QUERY_SERVICE_CONFIGA> QueryConfig() const
+	{
+		DWORD dwBytesRequired = NULL;
+		std::unique_ptr<QUERY_SERVICE_CONFIGA> pSvcConfig = nullptr;
+
+		if (!QueryServiceConfigA(this->m_SvcHandle, nullptr, 0, &dwBytesRequired)) 
+		{
+			pSvcConfig = std::make_unique<QUERY_SERVICE_CONFIGA>(dwBytesRequired);
+			
+			if (!QueryServiceConfigA(this->m_SvcHandle, pSvcConfig.get(), dwBytesRequired, &dwBytesRequired)) 
+			{
+				std::cout << "Cannot query service configuration...\n";
+				
+				// Swap the unique_ptr into this scope for deletion and return a std::unique_ptr(nullptr) after failing...
+				std::unique_ptr<QUERY_SERVICE_CONFIGA> releasePtr( std::move(pSvcConfig) );
+			}
+		}
+
+		// weird flex, but OK.
+		return std::move(pSvcConfig);
+	}
+
 	//Check if the service handle is valid.
 	inline bool Valid() const
 	{
