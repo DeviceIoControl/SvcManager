@@ -56,13 +56,14 @@ public:
 
 		if (!QueryServiceConfigA(this->m_SvcHandle, nullptr, 0, &dwBytesRequired)) 
 		{
-			pSvcConfig = std::make_unique<QUERY_SERVICE_CONFIGA>(dwBytesRequired);
+			auto ptr = reinterpret_cast<QUERY_SERVICE_CONFIGA*>(std::calloc(1, dwBytesRequired));
+			pSvcConfig = std::unique_ptr<QUERY_SERVICE_CONFIGA>(ptr);
 			
 			if (!QueryServiceConfigA(this->m_SvcHandle, pSvcConfig.get(), dwBytesRequired, &dwBytesRequired)) 
 			{
 				std::cout << "Cannot query service configuration...\n";
 				
-				// Swap the unique_ptr into this scope for deletion and return a std::unique_ptr(nullptr) after failing...
+				// After failing, we swap the unique_ptr into this scope for deletion and return a std::unique_ptr(nullptr)...
 				std::unique_ptr<QUERY_SERVICE_CONFIGA> releasePtr( std::move(pSvcConfig) );
 			}
 		}
