@@ -75,7 +75,8 @@ public:
 	//Check if the service handle is valid.
 	inline bool Valid() const
 	{
-		return (this->m_SvcHandle != static_cast<SC_HANDLE>(INVALID_HANDLE_VALUE));
+		return (this->m_SvcHandle != static_cast<SC_HANDLE>(INVALID_HANDLE_VALUE)
+			&& this->m_SvcHandle != NULL);
 	}
 
 	inline operator SC_HANDLE() const { return this->m_SvcHandle; }
