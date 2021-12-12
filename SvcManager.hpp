@@ -104,7 +104,10 @@ public:
 	//NOTE: Only closes the service handle. This does NOT delete the service from the system.
 	inline ~ServiceHandle()
 	{
-		CloseServiceHandle(this->m_SvcHandle);
+		if(this->m_SvcHandle != INVALID_HANDLE_VALUE)
+		{
+			CloseServiceHandle(this->m_SvcHandle);
+		}
 	}
 
 private:
@@ -182,12 +185,13 @@ public:
 		const std::string& svcBinPath, const std::string& svcUserName = "",
 		const std::string& svcUserPwd = "")
 	{
-		DWORD SvcTagId = 0;
+		const char* lpszSvcUserName = (svcUserName.empty()) ? nullptr : svcUserName.c_str();
+		const char* lpszUserPwd = (svcUserPwd.empty()) ? nullptr : svcUserPwd.c_str();
 
 		SC_HANDLE serviceHandle = CreateServiceA(ServiceManager::m_SvcManager, svcName.c_str(),
 			svcDispName.c_str(), SERVICE_ALL_ACCESS, static_cast<DWORD>(ServiceType), static_cast<DWORD>(StartType),
-			static_cast<DWORD>(ErrorControl), svcBinPath.c_str(), nullptr, &SvcTagId, nullptr, svcUserName.c_str(),
-			svcUserPwd.c_str());
+			static_cast<DWORD>(ErrorControl), svcBinPath.c_str(), nullptr, nullptr, nullptr, lpszSvcUserName,
+			lpszUserPwd);
 
 		return ServiceHandle(serviceHandle, svcDispName);
 	}

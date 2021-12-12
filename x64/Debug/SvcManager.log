@@ -1,30 +1,23 @@
-﻿Build started 07/12/2021 18:24:11.
+﻿Build started 12/12/2021 20:06:39.
 Logging verbosity is set to: Normal.     1>Project "U:\00000000001\Visual Studio 2019\Solutions\DevProjects\SvcManager\SvcManager.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\bin\HostX86\x64\CL.exe /c /ZI /JMC /nologo /W3 /WX- /diagnostics:column /sdl /Od /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /std:c++17 /Fo"x64\Debug\\" /Fd"U:\00000000001\Visual Studio 2019\Solutions\DevProjects\x64\Debug\SvcManager.pdb" /external:W3 /Gd /TP /FC /errorReport:prompt SvcManager.hpp
          SvcManager.hpp
      1>U:\00000000001\Visual Studio 2019\Solutions\DevProjects\SvcManager\SvcManager.hpp(47,1): warning C4267: 'argument': conversion from 'size_t' to 'DWORD', possible loss of data
-     1>U:\00000000001\Visual Studio 2019\Solutions\DevProjects\SvcManager\SvcManager.hpp(200,1): warning C4267: 'initializing': conversion from 'size_t' to 'DWORD', possible loss of data
-     1>C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\memory(3416,35): error C2664: '_QUERY_SERVICE_CONFIGA::_QUERY_SERVICE_CONFIGA(const _QUERY_SERVICE_CONFIGA &)': cannot convert argument 1 from 'DWORD' to 'const _QUERY_SERVICE_CONFIGA &'
-       C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\memory(3415,1): message : Reason: cannot convert from 'DWORD' to 'const _QUERY_SERVICE_CONFIGA'
-       C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\memory(3415,1): message : No constructor could take the source type, or constructor overload resolution was ambiguous
-       C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winsvc.h(826,1): message : see declaration of '_QUERY_SERVICE_CONFIGA::_QUERY_SERVICE_CONFIGA'
-       U:\00000000001\Visual Studio 2019\Solutions\DevProjects\SvcManager\SvcManager.hpp(59): message : see reference to function template instantiation 'std::unique_ptr<QUERY_SERVICE_CONFIGA,std::default_delete<QUERY_SERVICE_CONFIGA>> std::make_unique<QUERY_SERVICE_CONFIGA,DWORD&,0>(DWORD &)' being compiled
-     1>Done Building Project "U:\00000000001\Visual Studio 2019\Solutions\DevProjects\SvcManager\SvcManager.vcxproj" (Build target(s)) -- FAILED.
+     1>U:\00000000001\Visual Studio 2019\Solutions\DevProjects\SvcManager\SvcManager.hpp(209,1): warning C4267: 'initializing': conversion from 'size_t' to 'DWORD', possible loss of data
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\bin\HostX86\x64\Lib.exe /OUT:"U:\00000000001\Visual Studio 2019\Solutions\DevProjects\x64\Debug\SvcManager.lib" /NOLOGO /MACHINE:X64 x64\Debug\SvcManager.obj
+         SvcManager.vcxproj -> U:\00000000001\Visual Studio 2019\Solutions\DevProjects\x64\Debug\SvcManager.lib
+     1>Done Building Project "U:\00000000001\Visual Studio 2019\Solutions\DevProjects\SvcManager\SvcManager.vcxproj" (Build target(s)).
 
-Build FAILED.
+Build succeeded.
 
        "U:\00000000001\Visual Studio 2019\Solutions\DevProjects\SvcManager\SvcManager.vcxproj" (Build target) (1) ->
        (ClCompile target) -> 
          U:\00000000001\Visual Studio 2019\Solutions\DevProjects\SvcManager\SvcManager.hpp(47,1): warning C4267: 'argument': conversion from 'size_t' to 'DWORD', possible loss of data
-         U:\00000000001\Visual Studio 2019\Solutions\DevProjects\SvcManager\SvcManager.hpp(200,1): warning C4267: 'initializing': conversion from 'size_t' to 'DWORD', possible loss of data
-
-
-       "U:\00000000001\Visual Studio 2019\Solutions\DevProjects\SvcManager\SvcManager.vcxproj" (Build target) (1) ->
-       (ClCompile target) -> 
-         C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.29.30133\include\memory(3416,35): error C2664: '_QUERY_SERVICE_CONFIGA::_QUERY_SERVICE_CONFIGA(const _QUERY_SERVICE_CONFIGA &)': cannot convert argument 1 from 'DWORD' to 'const _QUERY_SERVICE_CONFIGA &'
+         U:\00000000001\Visual Studio 2019\Solutions\DevProjects\SvcManager\SvcManager.hpp(209,1): warning C4267: 'initializing': conversion from 'size_t' to 'DWORD', possible loss of data
 
     2 Warning(s)
-    1 Error(s)
+    0 Error(s)
 
-Time Elapsed 00:00:01.10
+Time Elapsed 00:00:01.40
